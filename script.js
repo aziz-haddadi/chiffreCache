@@ -1,5 +1,5 @@
 function startGame() {
-    const difficulty = prompt("Choissir un niveau de difficulté: easy, medium, hard ");
+    const difficulty = prompt("Choose a difficulty level: easy, medium, hard ");
     
     let maxAttempts, maxNumber;
     switch (difficulty) {
@@ -16,7 +16,7 @@ function startGame() {
             maxNumber = 50;
             break;
         default:
-            alert("Niveau de difficulté non reconnue!!");
+            alert("Unrecognized difficulty level!!");
             startGame();
             return;
     }
@@ -26,7 +26,7 @@ function startGame() {
     let guessed = false;
 
     while (attempts < maxAttempts && !guessed) {
-        const userGuess = prompt(`Choose a number between 1 and ${maxNumber} (or type 'stop' to end the game):`);
+        const userGuess = prompt(`Choose a number between 1 and ${maxNumber} (or type 'stop' to end the game). Attempts left: ${maxAttempts - attempts}`);
         
         if (userGuess.toLowerCase() === 'stop') {
             alert("Game stopped. Thanks for playing!");
