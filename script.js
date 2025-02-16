@@ -1,27 +1,26 @@
-function startGame() {
+const button = document.querySelector("button");
+button.addEventListener("click", function() {
     const difficulty = prompt("Choose a difficulty level: easy, medium, hard ");
     
     let maxAttempts, maxNumber;
     switch (difficulty) {
         case 'easy':
             maxAttempts = 10;
-            maxNumber = 10;
+            maxNumber = 40;
             break;
         case 'medium':
             maxAttempts = 7;
-            maxNumber = 20;
+            maxNumber = 80;
             break;
         case 'hard':
             maxAttempts = 5;
-            maxNumber = 50;
+            maxNumber = 60;
             break;
         default:
             alert("Unrecognized difficulty level!!");
-            startGame();
-            return;
     }
 
-    const randomNumber = Math.floor(Math.random() * maxNumber) + 1;
+    const randomNumber = Math.floor(Math.random() * maxNumber) ;
     let attempts = 0;
     let guessed = false;
 
@@ -30,11 +29,10 @@ function startGame() {
         
         if (userGuess.toLowerCase() === 'stop') {
             alert("Game stopped. Thanks for playing!");
-            return;
         }
 
         attempts++;
-        const guessNumber = parseInt(userGuess, 10);
+        const guessNumber = parseInt(userGuess,10);
 
         if (guessNumber === randomNumber) {
             alert(`Great Job, you guessed the number in only ${attempts} attempts!`);
@@ -52,7 +50,5 @@ function startGame() {
         alert(`You didn't guess the number. The correct number was ${randomNumber}. Maybe next time!`);
     }
 
-    if (confirm("Wanna play again?")) {
-        startGame();
-    }
-}
+    confirm("Wanna play again?");
+});
